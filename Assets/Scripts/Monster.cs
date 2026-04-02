@@ -28,7 +28,7 @@ public class Monster : LivingEntity
     private AudioClip hitClip;
     private AudioClip deathClip;
 
-    public float traceDistance = 10f;
+    private float traceDistance = 30f;
     public float attackInterval = 1f;
     public float attackDistance = 1.5f;
     private float lastAttackTime = 0f;
@@ -84,6 +84,7 @@ public class Monster : LivingEntity
         hitClip = zombieData.hurtClip;
         deathClip = zombieData.deathClip;
         CurrentStatus = Status.Idle;
+        attackDistance = zombieData.attackDistance;
         SetHealth();
     }
 

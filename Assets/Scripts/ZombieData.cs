@@ -9,4 +9,5 @@ public class ZombieData : ScriptableObject
     public float speed = 4f;
     public float hp = 100f;
     public float damage = 10f;
+    public float attackDistance = 1f;
 }

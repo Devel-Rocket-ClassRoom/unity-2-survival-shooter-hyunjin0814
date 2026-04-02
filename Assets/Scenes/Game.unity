@@ -291,6 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 436133163}
+  - component: {fileID: 436133164}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -313,6 +314,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &436133164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436133162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cc127aaa1a2614abf4e44a94240840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiManager
+  healthSlider: {fileID: 2078056262}
+  scoreText: {fileID: 607795255}
 --- !u!1 &451168463
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +534,7 @@ MonoBehaviour:
   onDead:
     m_PersistentCalls:
       m_Calls: []
+  uiManager: {fileID: 436133164}
   hitClip: {fileID: 8300000, guid: 9922a12f34d0a084aab32de985459723, type: 3}
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
 --- !u!82 &486227652
@@ -1256,6 +1272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca14123f6e4151b4984740e9758d73e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterSpawner
+  uiManager: {fileID: 436133164}
   prefabs:
   - {fileID: 7471369837768777145, guid: 21f065d68432d19498b8f385df290f0c, type: 3}
   - {fileID: 8958607841395441725, guid: 2f7bebcaee76aad45b62474322af8339, type: 3}
@@ -1363,7 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

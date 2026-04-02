@@ -1,8 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealth : LivingEntity
 {
+    public UiManager uiManager;
+
     private AudioSource playerAudioSource;
     private PlayerMovement playerMovement;
     private PlayerShooter playerShooter;
@@ -24,6 +25,7 @@ public class PlayerHealth : LivingEntity
         base.OnEnable();
         playerMovement.enabled = true;
         playerShooter.enabled = true;
+        uiManager.SetHealthSlide(Health / maxHp);
     }
     public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     { 
@@ -33,6 +35,8 @@ public class PlayerHealth : LivingEntity
         }
 
         base.OnDamage(damage, hitPoint, hitNormal);
+
+        uiManager.SetHealthSlide(Health / maxHp);
 
         Debug.Log($"체력: {Health}");
     }

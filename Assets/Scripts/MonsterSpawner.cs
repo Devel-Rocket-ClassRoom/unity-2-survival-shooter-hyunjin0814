@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
+    public UiManager uiManager;
     public Monster[] prefabs;
 
     public Transform[] spawnPoints;
@@ -11,10 +12,14 @@ public class MonsterSpawner : MonoBehaviour
 
     private int wave = 0;
 
+    private float timer = 0;
+
     private void Update()
     {
-        if (monsters.Count == 0)
+        timer += Time.deltaTime;
+        if (timer > 5f)
         {
+            timer = 0f;
             SpawnWave();
         }
     }
@@ -37,5 +42,6 @@ public class MonsterSpawner : MonoBehaviour
 
         monster.onDead.AddListener(() => monsters.Remove(monster));
         monster.onDead.AddListener(() => Destroy(monster.gameObject, 5f));
+        monster.onDead.AddListener(() => uiManager.AddScore(100));
     }
 }
