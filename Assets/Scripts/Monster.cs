@@ -34,6 +34,8 @@ public class Monster : LivingEntity
     private float lastAttackTime = 0f;
     private float damage;
 
+    private float sinkSpeed = 0.5f;
+
     private Status currentStatus;
 
     public Status CurrentStatus
@@ -62,7 +64,7 @@ public class Monster : LivingEntity
                     break;
                 case Status.Die:
                     zombieAnimator.SetTrigger("Die");
-                    agent.isStopped = true;
+                    agent.enabled = false;
                     break;
             }
         }
@@ -167,7 +169,7 @@ public class Monster : LivingEntity
     }
     private void UpdateDie()
     {
-
+        transform.Translate(Vector3.down * sinkSpeed * Time.deltaTime);
     }
 
     private Transform FindTarget(float radius)
@@ -204,7 +206,6 @@ public class Monster : LivingEntity
     }
 
     public void StartSinking()
-    {
-
+    { 
     }
 }
