@@ -48,6 +48,12 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit ,shotDistance))
         {
             hitPosition = hit.point;
+
+            var target = hit.collider.GetComponent<IDamageable>();
+            if (target != null)
+            {
+                target.OnDamage(20f, hit.point, hit.normal);
+            }
         }
         else
         {
