@@ -7,5 +7,11 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ZomBearController
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 92f54f6e2859f034cb7e8e105db18b35, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d0c63310d5c229f42a501f2d7bf5ab2e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d0c63310d5c229f42a501f2d7bf5ab2e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d175856b2a5e61342b804d366707fe7b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d175856b2a5e61342b804d366707fe7b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: faa3d5621e3ba194a8cdbd074cc7c504, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: faa3d5621e3ba194a8cdbd074cc7c504, type: 2}

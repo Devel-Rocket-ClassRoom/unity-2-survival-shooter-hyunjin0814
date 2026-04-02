@@ -9,7 +9,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     public UnityEvent onDead;
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         Health = maxHp;
         IsDead = false;
@@ -33,5 +33,10 @@ public class LivingEntity : MonoBehaviour, IDamageable
         onDead?.Invoke();
 
         IsDead = true;
+    }
+
+    public void SetHealth()
+    {
+        Health = maxHp;
     }
 }

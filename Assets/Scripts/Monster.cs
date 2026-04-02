@@ -19,7 +19,7 @@ public class Monster : LivingEntity
     private ParticleSystem takeDamageEffect;
     [SerializeField]
     private LayerMask targetLayer;
-    private Collider monsterCollider;
+    private CapsuleCollider monsterCollider;
     private AudioSource monsterAudioSource;
     private NavMeshAgent agent;
     private Animator zombieAnimator;
@@ -30,7 +30,7 @@ public class Monster : LivingEntity
 
     public float traceDistance = 10f;
     public float attackInterval = 1f;
-    public float attackDistance = 1f;
+    public float attackDistance = 1.5f;
     private float lastAttackTime = 0f;
     private float damage;
 
@@ -70,7 +70,7 @@ public class Monster : LivingEntity
 
     void Awake()
     {
-        monsterCollider = GetComponent<Collider>();
+        monsterCollider = GetComponent<CapsuleCollider>();
         monsterAudioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         zombieAnimator = GetComponent<Animator>();
@@ -84,6 +84,7 @@ public class Monster : LivingEntity
         hitClip = zombieData.hurtClip;
         deathClip = zombieData.deathClip;
         CurrentStatus = Status.Idle;
+        SetHealth();
     }
 
     private void Update()
@@ -152,7 +153,15 @@ public class Monster : LivingEntity
         if (Time.time > lastAttackTime + attackInterval)
         {
             lastAttackTime = Time.time;
-            Debug.Log("공격");
+            var livingEntity = target.GetComponent<LivingEntity>();
+            if (livingEntity != null)
+            {
+                if (!livingEntity.IsDead)
+                {
+                    Debug.Log("공격");
+                    livingEntity.OnDamage(damage, transform.position, transform.forward);
+                }
+            }
         }
     }
     private void UpdateDie()
@@ -190,6 +199,7 @@ public class Monster : LivingEntity
 
         monsterAudioSource.PlayOneShot(deathClip);
         CurrentStatus = Status.Die;
+        monsterCollider.enabled = false;
     }
 
     public void StartSinking()
