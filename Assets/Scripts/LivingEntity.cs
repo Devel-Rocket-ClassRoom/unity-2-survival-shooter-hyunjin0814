@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class LivingEntity : MonoBehaviour, IDamageable
 {
-    private float maxHp = 100f;
+    public float maxHp = 100f;
     public float Health { get; private set; }
     public bool IsDead { get; private set; }
 

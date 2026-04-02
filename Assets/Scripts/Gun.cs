@@ -16,6 +16,8 @@ public class Gun : MonoBehaviour
     private LineRenderer lineRenderer;
     private AudioSource audioSource;
 
+    public AudioClip shotClip;
+
     private Coroutine coShot;
 
     private void Awake()
@@ -77,7 +79,7 @@ public class Gun : MonoBehaviour
     {
         shotParticle.Play();
 
-        //audioSource.Play();
+        audioSource.PlayOneShot(shotClip);
         lineRenderer.SetPosition(0, shotStart.position);
         lineRenderer.SetPosition(1, hitPosition);
         lineRenderer.enabled = true;

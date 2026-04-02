@@ -24,6 +24,7 @@ public class Monster : LivingEntity
     private NavMeshAgent agent;
     private Animator zombieAnimator;
 
+    public ZombieData zombieData;
     private AudioClip hitClip;
     private AudioClip deathClip;
 
@@ -75,8 +76,13 @@ public class Monster : LivingEntity
         zombieAnimator = GetComponent<Animator>();
     }
 
-    void Start()
+    private void Start()
     {
+        maxHp = zombieData.hp;
+        agent.speed = zombieData.speed;
+        damage = zombieData.damage;
+        hitClip = zombieData.hurtClip;
+        deathClip = zombieData.deathClip;
         CurrentStatus = Status.Idle;
     }
 
@@ -169,7 +175,7 @@ public class Monster : LivingEntity
     {
         base.OnDamage(damage, hitPoint, hitNormal);
 
-        //monsterAudioSource.PlayOneShot(hitClip);
+        monsterAudioSource.PlayOneShot(hitClip);
         takeDamageEffect.transform.position = hitPoint;
         takeDamageEffect.transform.forward = hitNormal;
         takeDamageEffect.Play();
@@ -182,6 +188,12 @@ public class Monster : LivingEntity
 
         base.Die();
 
+        monsterAudioSource.PlayOneShot(deathClip);
         CurrentStatus = Status.Die;
+    }
+
+    public void StartSinking()
+    {
+
     }
 }
