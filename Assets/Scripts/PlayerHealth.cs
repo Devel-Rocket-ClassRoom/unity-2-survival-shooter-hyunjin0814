@@ -31,12 +31,14 @@ public class PlayerHealth : LivingEntity
     { 
         if (!IsDead)
         {
-            playerAudioSource.PlayOneShot(hitClip);
+            SoundManager.instance.PlaySFX(hitClip);
         }
 
         base.OnDamage(damage, hitPoint, hitNormal);
 
         uiManager.SetHealthSlide(Health / maxHp);
+
+        uiManager.PlayDamageFlash();
 
         Debug.Log($"체력: {Health}");
     }
@@ -48,10 +50,12 @@ public class PlayerHealth : LivingEntity
 
         base.Die();
 
-        playerAudioSource.PlayOneShot(deathClip);
+        SoundManager.instance.PlaySFX(deathClip);
         playerAnimator.SetTrigger("Die");
 
         playerMovement.enabled = false;
         playerShooter.enabled = false;
+
+        uiManager.OnPlayerDead();
     }
 }

@@ -9,12 +9,15 @@ public class PlayerInput : MonoBehaviour
     public float UpDown { get; private set; }
     public float LeftDonw { get; private set; }
     public bool Fire { get; private set; }
-
+    public bool Escape { get; private set; }
+    public bool Ultimate { get; private set; }
 
     private void Update()
     {
         UpDown = Input.GetAxis(upDown);
         LeftDonw = Input.GetAxis(leftRight);
         Fire = Input.GetButton(fireButton);
+        Escape = Input.GetKey(KeyCode.Escape);
+        Ultimate = Input.GetKeyDown(KeyCode.R);
     }
 }

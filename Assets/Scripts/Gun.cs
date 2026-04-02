@@ -1,10 +1,9 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class Gun : MonoBehaviour
 {
-    private float shotDistance = 10f;
+    private float shotDistance = 20f;
     private float interval = 0.1f;
     private float lastShotTime = 0f;
 
@@ -79,7 +78,7 @@ public class Gun : MonoBehaviour
     {
         shotParticle.Play();
 
-        audioSource.PlayOneShot(shotClip);
+        SoundManager.instance.PlaySFX(shotClip);
         lineRenderer.SetPosition(0, shotStart.position);
         lineRenderer.SetPosition(1, hitPosition);
         lineRenderer.enabled = true;

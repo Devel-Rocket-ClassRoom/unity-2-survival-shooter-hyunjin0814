@@ -187,7 +187,7 @@ public class Monster : LivingEntity
     {
         base.OnDamage(damage, hitPoint, hitNormal);
 
-        monsterAudioSource.PlayOneShot(hitClip);
+        SoundManager.instance.PlaySFX(hitClip);
         takeDamageEffect.transform.position = hitPoint;
         takeDamageEffect.transform.forward = hitNormal;
         takeDamageEffect.Play();
@@ -200,7 +200,7 @@ public class Monster : LivingEntity
 
         base.Die();
 
-        monsterAudioSource.PlayOneShot(deathClip);
+        SoundManager.instance.PlaySFX(deathClip);
         CurrentStatus = Status.Die;
         monsterCollider.enabled = false;
     }
